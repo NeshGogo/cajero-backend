@@ -32,6 +32,8 @@ namespace BackEndCajero
 
             services.AddDbContext<BackEndCajeroContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("BackEndCajeroContext")));
+          
+            // Permite la referencia multiple en los joins 
             services.AddControllers().AddNewtonsoftJson(o =>
             {
                 o.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
@@ -45,6 +47,7 @@ namespace BackEndCajero
             {
                 app.UseDeveloperExceptionPage();
             }
+            // permite la solicitud de peticiones aplicaciones que estan en diferentes puertos localhost
             app.UseCors(x => x
             .AllowAnyOrigin()
             .AllowAnyMethod()
@@ -52,7 +55,7 @@ namespace BackEndCajero
             app.UseHttpsRedirection();
 
             app.UseRouting();
-
+ 
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

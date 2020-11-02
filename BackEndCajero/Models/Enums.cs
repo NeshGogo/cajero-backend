@@ -7,12 +7,12 @@ namespace BackEndCajero.Models
 {
     public enum TransactionTypeEnum
     {
-        Withdraw,
-        Deposit,
+        Withdraw = 1,
+        Deposit = 2,
     }
     public enum TransactionDestinationEnum
     {
-        Own,
-        Other,
+        Own = 1,
+        Other = 2,
     }
 }
